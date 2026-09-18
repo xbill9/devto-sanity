@@ -1,4 +1,1 @@
-devto_draft_id = 4687594
-devto = https://dev.to/xbill/its-got-what-content-craves-sanity-built-for-the-people-of-idiocracy-484n-temp-slug-2941207
 repo = https://github.com/xbill9/devto-sanity
-live = https://brawndo-gov-289270257791.us-central1.run.app

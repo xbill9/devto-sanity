@@ -47,8 +47,6 @@ The one pitch for a CMS that holds up is that people who can't use git can use a
 
 The Kiosk is hosted at `brawndo-agriculture.sanity.studio` and signs in through the Sanity Dashboard.
 
-PENDING: video walkthrough.
-
 ---
 
 #### Code
@@ -61,7 +59,7 @@ https://github.com/xbill9/devto-sanity
 
 #### My Build Process
 
-The whole project was built in one Claude Code session, from an empty directory to a harvested field. The session is embedded at the end.
+The whole project was built in one Claude Code session, from an empty directory to a harvested field.
 
 ---
 
@@ -231,12 +229,6 @@ For an agent, the stock Studio. For the people of Idiocracy, the Kiosk, and that
 - Project ID: `ukyhb6bu`, dataset `production` (public read)
 - Workflow: `joes-plan` v1, tag `dev`
 - Schema types: `field`, `citizen`, `proposal`, `vote`
-
----
-
-#### Agent Session
-
-PENDING: curated Claude Code session, made public, with secrets checked.
 
 ---
 
