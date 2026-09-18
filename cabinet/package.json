@@ -1,0 +1,31 @@
+{
+  "name": "brawndo-cabinet-room",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy --title \"Cabinet Room\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@sanity/sdk": "^3.3.0",
+    "@sanity/sdk-react": "^3.3.0",
+    "@sanity/ui": "^3.1.0",
+    "@sanity/workflow-components": "0.33.0",
+    "@sanity/workflow-engine": "0.33.0",
+    "@sanity/workflow-react": "0.33.0",
+    "@sanity/workflow-sdk": "0.33.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "sanity": "^6.15.0",
+    "styled-components": "^6.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "typescript": "^6.0.3"
+  }
+}

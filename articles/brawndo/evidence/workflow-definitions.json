@@ -1,0 +1,10 @@
+# deployed definitions
+# captured 2026-09-18T17:15:25+00:00 from project ukyhb6bu
+[
+  {
+    "_id": "dev.joes-plan.v1",
+    "name": "joes-plan",
+    "tag": "dev",
+    "version": 1
+  }
+]

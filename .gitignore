@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.next/
+.sanity/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+trials/recordings/
+trials/s3-repo/

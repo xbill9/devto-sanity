@@ -1,0 +1,18 @@
+{"_id":"field-01","_type":"field","number":1,"name":"North Forty","crop":"corn","irrigation":"brawndo","growth":"dust"}
+{"_id":"field-02","_type":"field","number":2,"name":"Upper Dust","crop":"wheat","irrigation":"brawndo","growth":"dust"}
+{"_id":"field-03","_type":"field","number":3,"name":"The Crater","crop":"potatoes","irrigation":"brawndo","growth":"dust"}
+{"_id":"field-04","_type":"field","number":4,"name":"Costco Annex","crop":"tomatoes","irrigation":"brawndo","growth":"dust"}
+{"_id":"field-05","_type":"field","number":5,"name":"Stadium Lot","crop":"corn","irrigation":"brawndo","growth":"dust"}
+{"_id":"field-06","_type":"field","number":6,"name":"Old Carl’s Jr","crop":"wheat","irrigation":"brawndo","growth":"dust"}
+{"_id":"field-07","_type":"field","number":7,"name":"Brawndo Plaza","crop":"potatoes","irrigation":"brawndo","growth":"dust"}
+{"_id":"field-08","_type":"field","number":8,"name":"Lower Dust","crop":"tomatoes","irrigation":"brawndo","growth":"dust"}
+{"_id":"field-09","_type":"field","number":9,"name":"Ow My Acres","crop":"corn","irrigation":"brawndo","growth":"dust"}
+{"_id":"field-10","_type":"field","number":10,"name":"Hospital Field","crop":"wheat","irrigation":"brawndo","growth":"dust"}
+{"_id":"field-11","_type":"field","number":11,"name":"Rehabilitation Row","crop":"potatoes","irrigation":"brawndo","growth":"dust"}
+{"_id":"field-12","_type":"field","number":12,"name":"Joe’s Patch","crop":"tomatoes","irrigation":"brawndo","growth":"dust"}
+{"_id":"citizen-notsure","_type":"citizen","handle":"NotSure"}
+{"_id":"citizen-frankieatcostco","_type":"citizen","handle":"FrankieAtCostco"}
+{"_id":"citizen-upgrayeddfan","_type":"citizen","handle":"UpgrayeddFan"}
+{"_id":"citizen-beef_supreme","_type":"citizen","handle":"Beef_Supreme"}
+{"_id":"citizen-rita_plus","_type":"citizen","handle":"Rita_Plus"}
+{"_id":"citizen-thecabinet","_type":"citizen","handle":"TheCabinet"}

@@ -1,0 +1,36 @@
+# GET /projects/<id>/roles (drainer token)
+# captured 2026-09-18T17:15:25+00:00 from project ukyhb6bu
+[
+  {
+    "name": "access-manager",
+    "isCustom": false
+  },
+  {
+    "name": "administrator",
+    "isCustom": false
+  },
+  {
+    "name": "blueprints-deployer",
+    "isCustom": false
+  },
+  {
+    "name": "contributor",
+    "isCustom": false
+  },
+  {
+    "name": "deploy-studio",
+    "isCustom": false
+  },
+  {
+    "name": "developer",
+    "isCustom": false
+  },
+  {
+    "name": "editor",
+    "isCustom": false
+  },
+  {
+    "name": "viewer",
+    "isCustom": false
+  }
+]

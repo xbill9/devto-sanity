@@ -1,0 +1,28 @@
+{
+  "name": "brawndo-workflows",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "check": "sanity-workflows deploy --check",
+    "deploy": "sanity-workflows deploy",
+    "runtime": "tsx runtime/run.ts",
+    "runtime:watch": "tsx runtime/run.ts --every 15",
+    "e2e:start": "tsx runtime/e2e.ts start",
+    "e2e:finish": "tsx runtime/e2e.ts finish"
+  },
+  "dependencies": {
+    "@sanity/client": "^8.6.2",
+    "@sanity/workflow-cli": "0.33.0",
+    "@sanity/workflow-engine": "0.33.0"
+  },
+  "devDependencies": {
+    "@sanity/workflow-engine-test": "0.33.0",
+    "@types/node": "^24.0.0",
+    "tsx": "^4.23.13",
+    "typescript": "^6.0.3",
+    "vitest": "^3.2.0"
+  }
+}

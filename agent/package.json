@@ -1,0 +1,23 @@
+{
+  "name": "brawndo-secretary",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/secretary.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.126.0",
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "@sanity/client": "^7.0.0",
+    "@sanity/workflow-engine": "0.33.0",
+    "@sanity/workflow-mcp": "0.33.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^6.0.3"
+  }
+}

@@ -1,0 +1,26 @@
+# GET /users/me per robot token
+# captured 2026-09-18T17:15:25+00:00 from project ukyhb6bu
+{
+  "SANITY_VOTE_TOKEN": {
+    "name": "brawndo-web-vote (Robot)",
+    "roles": [
+      "editor"
+    ]
+  },
+  "SANITY_AGENT_TOKEN": {
+    "name": "brawndo-secretary-agent (Robot)",
+    "roles": [
+      "editor"
+    ]
+  },
+  "SANITY_DRAINER_TOKEN": {
+    "name": "brawndo-runtime-drainer (Robot)",
+    "roles": [
+      "editor"
+    ]
+  },
+  "SANITY_WORKFLOW_MCP_TOKEN": {
+    "name": "brawndo-workflow-mcp (Robot)",
+    "roles": []
+  }
+}

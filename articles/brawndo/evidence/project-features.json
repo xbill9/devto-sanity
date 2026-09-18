@@ -1,0 +1,21 @@
+# GET /projects/<id>/features (drainer token) — note: no custom-roles feature
+# captured 2026-09-18T17:15:25+00:00 from project ukyhb6bu
+[
+  "activityFeed",
+  "contentSourceMapping",
+  "editorialAiFieldActions",
+  "embeddingsIndexApi",
+  "noVersionRevival",
+  "privateDataset",
+  "roleContributor",
+  "roleDeveloper",
+  "roleEditor",
+  "roleViewer",
+  "sanityTasks",
+  "scheduledPublishing",
+  "singleDocRelease",
+  "studioComments",
+  "supportCommunity",
+  "toggle.schema.upload-pause",
+  "toggle.user-application.upload-live-manifest"
+]

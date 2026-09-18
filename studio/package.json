@@ -1,0 +1,31 @@
+{
+  "name": "brawndo-studio",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@sanity/sdk": "^3.3.0",
+    "@sanity/workflow-components": "0.33.0",
+    "@sanity/workflow-diagram": "0.33.0",
+    "@sanity/workflow-engine": "0.33.0",
+    "@sanity/workflow-react": "0.33.0",
+    "@sanity/workflow-sdk": "0.33.0",
+    "@sanity/workflow-studio": "0.33.0",
+    "@sanity/workflow-studio-plugin": "0.33.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "sanity": "^6.15.0",
+    "styled-components": "^6.4.2"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "typescript": "^5.9.0"
+  }
+}

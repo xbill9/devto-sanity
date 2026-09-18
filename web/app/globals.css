@@ -1,0 +1,25 @@
+:root {
+  --bg: #fff8e1; --ink: #1b1b1b; --brawndo: #00c853; --water: #0288d1; --card: #ffffff; --muted: #5d4037;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #121212; --ink: #f5f5f5; --card: #1e1e1e; --muted: #bcaaa4; }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 18px/1.4 system-ui, sans-serif; }
+main { max-width: 1100px; margin: 0 auto; padding: 16px; }
+header { text-align: center; }
+h1 { font-size: clamp(2rem, 8vw, 4rem); margin: 0.2em 0 0; letter-spacing: 0.05em; }
+.tag { margin: 0; color: var(--muted); font-weight: 600; }
+.totals { font-size: 1.1rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin: 24px 0; }
+.field { background: var(--card); border-radius: 20px; padding: 16px; border: 6px solid var(--brawndo); text-align: center; }
+.field.water { border-color: var(--water); }
+.field h2 { font-size: 1.1rem; margin: 0.3em 0; }
+.picture { font-size: 72px; line-height: 1; }
+.irrigation { margin: 0.2em 0 0.6em; font-weight: 700; }
+.votes { display: flex; gap: 8px; }
+.votes button { flex: 1; font-size: 1.6rem; padding: 10px 0; border-radius: 14px; border: 3px solid var(--muted); background: transparent; color: inherit; cursor: pointer; }
+.votes button:hover { background: rgba(0, 0, 0, 0.06); }
+.docket { background: var(--card); border-radius: 20px; padding: 16px 24px; }
+footer { margin: 32px 0; font-size: 0.9rem; color: var(--muted); text-align: center; }
+a { color: var(--water); }

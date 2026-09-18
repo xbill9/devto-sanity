@@ -1,0 +1,58 @@
+# Verbatim tool output captured during the build session of 2026-09-18 (Debian 13 laptop, Sanity CLI via npx,
+# @sanity/workflow-* 0.33.0). Each block names the command. Output is copied exactly; secrets never appeared in it.
+
+## 1. `sanity-workflows deploy` against the UNCLAIMED project (single project token from `sanity new`)
+- Deploying 1 definition(s) to dev (dev) → ukyhb6bu.production…
+✖ Deploy failed — Unauthorized - User is missing required grant sanity.project.roles/read to perform this operation (traceId: 7dd84ef63a01e429351a026770634a86)
+
+## 2. `sanity-workflows deploy` after claiming, logged in as the owner, custom role names in the definition
+    Error: workflow.deployDefinitions: unknown project roles for project
+    "ukyhb6bu":
+      - joes-plan: generated role condition references unknown role
+    "secretary"
+      - joes-plan: generated role condition references unknown role "cabinet"
+      - joes-plan: generated role condition references unknown role "cabinet"
+
+## 3. `sanity-workflows deploy` with BRAWNDO_ROLE_CABINET=administrator BRAWNDO_ROLE_SECRETARY=editor
+✔ Processed 1 definition(s) · dev (dev) → ukyhb6bu.production
+  ⚠ unchanged joes-plan v1
+      ⚠ Project role "editor" has no current user holder; work routed to it has no recipient.
+
+## 4. `sanity tokens add brawndo-e2e-cabinet --role administrator ...` (a robot Cabinet)
+ ›   Error: Invalid role "administrator". Available roles: editor, developer,
+ ›   contributor, access-manager, blueprints-deployer, deploy-studio, viewer
+
+## 5. First live run, `e2e.ts finish` — effect handler returned only `outputs: {harvestAt}`
+[effect.water-fields] watered 2 field(s); harvest at 2026-09-18T16:45:02.622Z
+16:45:02  drainer watered { stage: 'growing', harvestAt: null }
+16:45:12  final stage growing
+
+## 6. Second live run, handler returns `outputs` AND `ops` (field.set, scope: workflow)
+16:46:03  agent started plan { instanceId: 'dev.wf-instance.e51f4996d8f3', stage: 'petition' }
+16:46:07  agent submitted cabinet
+16:46:08  agent approve rejected (engine verdict, advisory) ActionDisabledError
+   (Cabinet approved in the Kiosk Studio by the project owner, a person)
+[effect.water-fields] watered 2 field(s); harvest at 2026-09-18T16:47:00.255Z
+16:46:59  drainer watered { stage: 'growing', harvestAt: '2026-09-18T16:47:00.255Z' }
+16:46:59  fields after watering [ { growth: 'sprout', irrigation: 'water', number: 7 }, { growth: 'sprout', irrigation: 'water', number: 9 } ]
+[effect.harvest-fields] harvested 2 field(s)
+16:47:16  final stage harvest
+16:47:16  fields after harvest [ { growth: 'crop', irrigation: 'water', number: 7 }, { growth: 'crop', irrigation: 'water', number: 9 } ]
+
+## 7. Voting through the brawndo.gov server action, then an anonymous public GROQ read
+vote field-07 -> HTTP 200
+vote field-07 -> HTTP 200
+vote field-03 -> HTTP 200
+anonymous public read: {'anonCitizens': 1, 'f7water': 1, 'votes': 2}
+
+## 8. `make check` (offline suite)
+      Tests  8 passed (8)
+✔ 1 definition(s) passed validation (check only — dataset not contacted).
+ALL CHECKS PASSED
+
+## 9. Live Cloud Run deploy (project aisprint-491218, us-central1) and a vote through the deployed server action
+Service [brawndo-gov] revision [brawndo-gov-00001-c9g] has been deployed and is serving 100 percent of traffic.
+Service URL: https://brawndo-gov-289270257791.us-central1.run.app
+vote -> HTTP 200
+live totals: 2 of 12 fields on water · 4 votes from 8 citizens
+content lake: {'citizens': 8, 'votes': 4}

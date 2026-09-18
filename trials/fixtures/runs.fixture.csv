@@ -1,0 +1,7 @@
+participant,population,surface,task,run,seconds,assists,correct
+P1,human,S1,T1,1,10,0,1
+P1,human,S1,T1,2,20,0,1
+P1,human,S1,T1,3,40,1,0
+P1,human,S3,T1,1,100,2,1
+P1,human,S3,T1,2,50,0,1
+A1,agent,S1,T1,1,7,0,1
