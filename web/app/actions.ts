@@ -5,6 +5,7 @@ import {revalidatePath} from 'next/cache'
 import {cookies} from 'next/headers'
 import {createClient} from 'next-sanity'
 import {dataset, projectId} from '@/sanity/client'
+import {summonSecretary, type SummonResult} from '@/lib/secretary'
 
 // Votes are written server-side with SANITY_VOTE_TOKEN, which never reaches the browser.
 // One vote per citizen per field is enforced by construction: the vote's _id is derived from
@@ -40,4 +41,12 @@ export async function vote(formData: FormData): Promise<void> {
   })
   // The voter sees their vote immediately; <SanityLive> updates everyone else's open pages.
   revalidatePath('/')
+}
+
+// "Summon the Secretary": runs the agent on the server. summonSecretary() refuses while a plan is in progress
+// or another summons is running, so a spammed button cannot start a second plan or a second agent run.
+export async function summon(_previous: SummonResult | null): Promise<SummonResult> {
+  const result = await summonSecretary()
+  revalidatePath('/')
+  return result
 }

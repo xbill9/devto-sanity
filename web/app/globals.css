@@ -28,3 +28,9 @@ a { color: var(--water); }
 .howto ol { margin: 0; padding-left: 1.2em; line-height: 1.6; }
 .votes button { font-size: 1.05rem; }
 .votes b { display: block; font-size: 1.5rem; }
+.summon { margin: 8px 0 16px; }
+.summon button { font-size: 1.2rem; padding: 12px 20px; border-radius: 14px; border: 3px solid var(--muted); background: transparent; color: inherit; cursor: pointer; }
+.summon button:hover:enabled { background: rgba(0, 0, 0, 0.06); }
+.summon button:disabled { cursor: wait; opacity: 0.7; }
+.summon p { min-height: 1.4em; margin: 8px 0 0; }
+.summon p.refused { opacity: 0.8; font-style: italic; }

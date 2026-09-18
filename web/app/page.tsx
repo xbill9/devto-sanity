@@ -3,6 +3,9 @@ import {serverReader, workflowTag} from '@/sanity/client'
 import {DOCKET_QUERY, FIELDS_QUERY, TOTALS_QUERY} from '@/sanity/queries'
 import {vote} from './actions'
 import {CROP, GROWTH, IRRIGATION, STAGE} from './pictures'
+import {SummonButton} from './summon-button'
+
+const KIOSK = 'https://brawndo-agriculture.sanity.studio/kiosk/workflows'
 
 // Render per request: a prerendered page is frozen at build time, and every cold-started Cloud Run instance
 // would serve that copy. <SanityLive> then keeps an open page current.
@@ -37,9 +40,11 @@ export default async function Home() {
             <b>Vote</b> on each field: keep ⚡ Brawndo or switch to 💧 water. Voting again changes your vote.
           </li>
           <li>
-            The Secretary of the Interior (an AI agent) proposes watering fields. The Cabinet (a person) approves or rejects.
+            <b>Summon the Secretary</b> (an AI agent, button below the fields). It reads the votes and sends the Cabinet a
+            plan to water the fields that want water.
           </li>
-          <li>Approved fields get water, sprout 🌱, and are harvested 🌽. Follow it in the Docket below.</li>
+          <li>The Cabinet (a person) approves or rejects the plan in the Kiosk.</li>
+          <li>Approved fields get 💧 water and sprout 🌱 at once, and are harvested 🌽 five minutes later. Watch the Docket.</li>
         </ol>
       </section>
 
@@ -68,6 +73,7 @@ export default async function Home() {
 
       <section className="docket" aria-label="Docket">
         <h2>🏛️ The Docket</h2>
+        <SummonButton />
         {docket.length === 0 ? (
           <p>No plans before the Cabinet. The Secretary of the Interior is thinking. Slowly.</p>
         ) : (
@@ -77,6 +83,11 @@ export default async function Home() {
                 <b>{STAGE[p.currentStage] ?? p.currentStage}</b> — {p.proposal?.title ?? '(missing proposal)'}
                 {p.proposal?.fields?.length ? <> · fields {p.proposal.fields.join(', ')}</> : null}
                 {p.currentStage === 'growing' && p.harvestAt ? <> · harvest {new Date(p.harvestAt).toLocaleTimeString()}</> : null}
+                {p.currentStage === 'cabinet' ? (
+                  <>
+                    {' '}· <a href={KIOSK}>Cabinet: decide in the Kiosk</a>
+                  </>
+                ) : null}
               </li>
             ))}
           </ol>
