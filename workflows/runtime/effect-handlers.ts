@@ -9,6 +9,10 @@ import {ENGINE_API_VERSION, extractDocumentId, type EffectHandler} from '@sanity
 export const GROW_MINUTES = Number(process.env.BRAWNDO_GROW_MINUTES ?? 5)
 
 let client: SanityClient | undefined
+/** Sanity Functions hand the handlers the client built from the Blueprint's robot token. */
+export function useContentClient(c: SanityClient): void {
+  client = c
+}
 export function contentClient(): SanityClient {
   if (!client) {
     const {SANITY_PROJECT_ID: projectId, SANITY_DATASET: dataset = 'production', SANITY_DRAINER_TOKEN: token} = process.env

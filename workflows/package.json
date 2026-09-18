@@ -11,14 +11,19 @@
     "runtime": "tsx runtime/run.ts",
     "runtime:watch": "tsx runtime/run.ts --every 15",
     "e2e:start": "tsx runtime/e2e.ts start",
-    "e2e:finish": "tsx runtime/e2e.ts finish"
+    "e2e:finish": "tsx runtime/e2e.ts finish",
+    "functions:deploy": "env -u SANITY_PROJECT_ID -u SANITY_STUDIO_PROJECT_ID -u NEXT_PUBLIC_SANITY_PROJECT_ID -u SANITY_APP_PROJECT_ID ../studio/node_modules/.bin/sanity blueprints deploy",
+    "functions:logs": "env -u SANITY_PROJECT_ID -u SANITY_STUDIO_PROJECT_ID -u NEXT_PUBLIC_SANITY_PROJECT_ID -u SANITY_APP_PROJECT_ID ../studio/node_modules/.bin/sanity functions logs",
+    "functions:info": "env -u SANITY_PROJECT_ID -u SANITY_STUDIO_PROJECT_ID -u NEXT_PUBLIC_SANITY_PROJECT_ID -u SANITY_APP_PROJECT_ID ../studio/node_modules/.bin/sanity blueprints info"
   },
   "dependencies": {
     "@sanity/client": "^8.6.2",
+    "@sanity/functions": "^1.8.0",
     "@sanity/workflow-cli": "0.33.0",
     "@sanity/workflow-engine": "0.33.0"
   },
   "devDependencies": {
+    "@sanity/blueprints": "0.26.1",
     "@sanity/workflow-engine-test": "0.33.0",
     "@types/node": "^24.0.0",
     "tsx": "^4.23.13",
