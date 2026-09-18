@@ -29,6 +29,20 @@ export default async function Home() {
         </p>
       </header>
 
+      <section className="howto" aria-label="How it works">
+        <h2>How it works</h2>
+        <ol>
+          <li>Every field is irrigated with ⚡ Brawndo. Nothing grows.</li>
+          <li>
+            <b>Vote</b> on each field: keep ⚡ Brawndo or switch to 💧 water. Voting again changes your vote.
+          </li>
+          <li>
+            The Secretary of the Interior (an AI agent) proposes watering fields. The Cabinet (a person) approves or rejects.
+          </li>
+          <li>Approved fields get water, sprout 🌱, and are harvested 🌽. Follow it in the Docket below.</li>
+        </ol>
+      </section>
+
       <section className="grid" aria-label="Fields">
         {fields.map((f) => (
           <article key={f._id} className={`field ${f.irrigation}`}>
@@ -37,15 +51,15 @@ export default async function Home() {
               #{f.number} {f.name} <span aria-hidden>{CROP[f.crop]}</span>
             </h2>
             <p className="irrigation">
-              {IRRIGATION[f.irrigation]} {f.irrigation === 'brawndo' ? 'Brawndo' : 'Water'}
+              Now: {IRRIGATION[f.irrigation]} {f.irrigation === 'brawndo' ? 'Brawndo' : 'Water'}
             </p>
             <form action={vote} className="votes">
               <input type="hidden" name="field" value={f._id} />
               <button name="choice" value="brawndo" aria-label={`Vote Brawndo for field ${f.number}`}>
-                ⚡ <b>{f.brawndo}</b>
+                ⚡ Brawndo <b>{f.brawndo}</b>
               </button>
               <button name="choice" value="water" aria-label={`Vote water for field ${f.number}`}>
-                💧 <b>{f.water}</b>
+                💧 Water <b>{f.water}</b>
               </button>
             </form>
           </article>
