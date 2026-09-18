@@ -8,3 +8,4 @@ dist/
 !.env.example
 trials/recordings/
 trials/s3-repo/
+.done

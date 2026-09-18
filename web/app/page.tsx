@@ -1,8 +1,12 @@
 import {sanityFetch} from '@/sanity/live'
-import {workflowTag} from '@/sanity/client'
+import {serverReader, workflowTag} from '@/sanity/client'
 import {DOCKET_QUERY, FIELDS_QUERY, TOTALS_QUERY} from '@/sanity/queries'
 import {vote} from './actions'
 import {CROP, GROWTH, IRRIGATION, STAGE} from './pictures'
+
+// Render per request: a prerendered page is frozen at build time, and every cold-started Cloud Run instance
+// would serve that copy. <SanityLive> then keeps an open page current.
+export const dynamic = 'force-dynamic'
 
 type Field = {_id: string; number: number; name: string; crop: string; irrigation: string; growth?: string; water: number; brawndo: number}
 type Plan = {_id: string; currentStage: string; startedAt: string; harvestAt: string | null; proposal: {title: string; author: string; fields: number[]} | null}
@@ -11,7 +15,7 @@ type Totals = {votes: number; citizens: number; watered: number; fields: number}
 export default async function Home() {
   const [{data: fields}, {data: docket}, {data: totals}] = await Promise.all([
     sanityFetch({query: FIELDS_QUERY}) as Promise<{data: Field[]}>,
-    sanityFetch({query: DOCKET_QUERY, params: {workflowTag}}) as Promise<{data: Plan[]}>,
+    serverReader.fetch<Plan[]>(DOCKET_QUERY, {workflowTag}).then((data) => ({data})),
     sanityFetch({query: TOTALS_QUERY}) as Promise<{data: Totals}>,
   ])
 

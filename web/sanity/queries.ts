@@ -10,7 +10,7 @@ export const FIELDS_QUERY: string = `
 // The docket: each Joe's Plan instance, joined to its proposal. The subject is a GDR URI,
 // dataset:<project>:<dataset>:<documentId>, so the document id is its fourth segment.
 export const DOCKET_QUERY: string = `
-  *[_type == "sanity.workflow.instance" && tag == $workflowTag] | order(startedAt desc) [0...10] {
+  *[_type == "sanity.workflow.instance" && tag == $workflowTag && !defined(abortedAt)] | order(startedAt desc) [0...10] {
     _id, currentStage, startedAt,
     "harvestAt": fields[name == "harvestAt"][0].value,
     "proposal": *[_id == string::split(^.fields[name == "subject"][0].value.id, ":")[3]][0]{

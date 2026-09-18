@@ -1,0 +1,16 @@
+# python3 trials/analyze.py trials/runs.csv — captured 2026-09-18T18:21:48Z
+source: trials/runs.csv  rows: 27
+
+## agent (participants: A1)
+
+| Surface | Task | n | Median s | Min s | Max s | Correct | Assists |
+|---|---|---:|---:|---:|---:|---:|---:|
+| Kiosk | T1 | 3 | 26.4 | 25.6 | 43.6 | 3/3 | 0 |
+| Kiosk | T2 | 3 | 25.6 | 21.6 | 38.4 | 3/3 | 0 |
+| Kiosk | T3 | 3 | 41.4 | 35.8 | 72.7 | 3/3 | 0 |
+| Stock Studio | T1 | 3 | 24.8 | 24.4 | 32.4 | 3/3 | 0 |
+| Stock Studio | T2 | 3 | 16.8 | 16.2 | 23.4 | 3/3 | 0 |
+| Stock Studio | T3 | 3 | 37.6 | 37.4 | 39.0 | 3/3 | 0 |
+| Markdown/GitHub | T1 | 3 | 37.2 | 33.0 | 82.3 | 3/3 | 0 |
+| Markdown/GitHub | T2 | 3 | 41.2 | 39.6 | 46.6 | 3/3 | 0 |
+| Markdown/GitHub | T3 | 3 | 46.2 | 43.0 | 72.9 | 3/3 | 0 |
