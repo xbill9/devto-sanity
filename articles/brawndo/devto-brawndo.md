@@ -3,7 +3,7 @@ title: "It's Got What Content Craves: Sanity, Built for the People of Idiocracy"
 published: false
 description: "An agent proposes watering the crops, a human Cabinet approves in a picture-button Studio, and Sanity Workflows waters and harvests. Plus a stopwatch on three ways to edit the same data."
 tags: devchallenge, sanitychallenge, sanity, ai
-cover_image: https://raw.githubusercontent.com/xbill9/devto-sanity/main/articles/brawndo/devto-cover.d67a2736.jpg
+cover_image: https://raw.githubusercontent.com/xbill9/devto-sanity/main/articles/brawndo/devto-cover.f8a7461a.jpg
 ---
 
 *This is a submission for the [Sanity Challenge, Path Two: Vibe-Code Something Strange](https://dev.to/challenges/sanity-2026-09-16)*
