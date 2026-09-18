@@ -1,1 +1,3 @@
+devto = https://dev.to/xbill/its-got-what-content-craves-sanity-built-for-the-people-of-idiocracy-4k84
 repo = https://github.com/xbill9/devto-sanity
+live = https://brawndo-gov-289270257791.us-central1.run.app

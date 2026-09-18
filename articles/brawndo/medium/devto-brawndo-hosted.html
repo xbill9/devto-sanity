@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>It's Got What Content Craves: Sanity, Built for the People of Idiocracy</title>
+  <meta name="description" content="An agent proposes watering the crops, a human Cabinet approves in a picture-button Studio, and Sanity Workflows waters and harvests. Plus a stopwatch on three ways to edit the same data." />
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <style>
+    body{font-family:-apple-system,'Segoe UI',Roboto,'Liberation Sans',Arial,sans-serif;
+         font-size:18px;line-height:1.58;max-width:42em;color:#242424;}
+    h1,h2,h3,h4{font-weight:700;line-height:1.25;margin-top:1.8em;}
+    h4{font-size:1.25em;}
+    img{max-width:100%;height:auto;display:block;margin:1.6em 0;}
+    pre{background:#f7f7f7;border:1px solid #e6e6e6;border-radius:4px;
+        padding:12px 14px;overflow-x:auto;font-size:14px;line-height:1.45;}
+    code{font-family:'Liberation Mono',Menlo,Consolas,monospace;}
+    :not(pre)>code{background:#f2f2f2;padding:1px 5px;border-radius:3px;font-size:.9em;}
+    blockquote{border-left:3px solid #ddd;margin-left:0;padding-left:1em;color:#555;}
+    hr{border:0;border-top:1px solid #e6e6e6;margin:2.4em 0;}
+  </style>
+</head>
+<body>
+<figure><img src="https://raw.githubusercontent.com/xbill9/devto-sanity/main/articles/brawndo/medium/img/devto-cover.f8a7461a.jpg" alt="It&#x27;s Got What Content Craves: Sanity, Built for the People of Idiocracy" /></figure>
+<p><em>This is a submission for the <a
+href="https://dev.to/challenges/sanity-2026-09-16">Sanity Challenge,
+Path Two: Vibe-Code Something Strange</a></em></p>
+<p><em>This article provides a step by step build of a
+<strong>Sanity</strong> project for the Department of Agriculture from
+Idiocracy, where every field is irrigated with Brawndo. An agent
+proposes watering the crops, a human Cabinet approves in a
+picture-button Studio, and <strong>Sanity Workflows</strong> waters and
+harvests the fields. A stopwatch then times the same edits in three
+interfaces.</em></p>
+<p><a
+href="https://github.com/xbill9/devto-sanity">github.com/xbill9/devto-sanity</a></p>
+<p><img src="https://raw.githubusercontent.com/xbill9/devto-sanity/main/articles/brawndo/medium/img/devto-brawndo-table-1.png"
+alt="Table: Project, Studio, Workflow, Front end" /></p>
+<hr />
+<h4 id="what-i-built">What I Built</h4>
+<p>In Idiocracy the crops are dying because every field is watered with
+Brawndo. It's got electrolytes. Joe's plan is to water them. With water.
+Like from the toilet.</p>
+<p>This is that Department of Agriculture, run on Sanity. The Secretary
+of the Interior is an <strong>agent</strong>. It drafts a proposal to
+water the fields and submits it. The <strong>Cabinet</strong>, a person,
+approves or rejects it. Citizens vote on a public scoreboard. An
+approved plan waters the fields, they sprout, and a few minutes later
+they are harvested. A rejected plan leaves a dust bowl.</p>
+<p>The one pitch for a CMS that holds up is that people who can't use
+git can use a data store. So the editing Studio is a kiosk of giant
+picture buttons, like the hospital in the film.</p>
+<p><img src="https://raw.githubusercontent.com/xbill9/devto-sanity/main/articles/brawndo/medium/img/devto-brawndo-table-2.png"
+alt="Table: Surface, Built with, Who uses it" /></p>
+<hr />
+<h4 id="demo">Demo</h4>
+<p><strong>brawndo.gov:</strong> <a
+href="https://brawndo-gov-289270257791.us-central1.run.app">brawndo-gov-289270257791.us-central1.run.app</a>
+— vote on a field; voting again replaces your vote.</p>
+<p>The Kiosk is hosted at <code>brawndo-agriculture.sanity.studio</code>
+and signs in through the Sanity Dashboard.</p>
+<hr />
+<h4 id="code">Code</h4>
+<p><a
+href="https://github.com/xbill9/devto-sanity">https://github.com/xbill9/devto-sanity</a></p>
+<p><code>make check</code> runs the offline suite. The README has the
+go-live runbook.</p>
+<hr />
+<h4 id="my-build-process">My Build Process</h4>
+<p>The whole project was built in one Claude Code session, from an empty
+directory to a harvested field.</p>
+<hr />
+<h4 id="where-do-i-start">Where Do I Start?</h4>
+<p>With what Sanity sells. A schema'd JSON store with a query language
+is common. Three things in Sanity's docs are harder to find
+elsewhere:</p>
+<ol type="1">
+<li><strong>Knowledge Bases</strong> surface conflicting sources side by
+side and keep your ruling across rebuilds.</li>
+<li><strong>Workflows</strong> make the process a document. People,
+agents and apps move the same instance through the same
+transitions.</li>
+<li><strong>The App SDK</strong> gives live, multi-user documents in
+your own interface.</li>
+</ol>
+<p>A Path Two app built around the second one is the right Brawndo.</p>
+<hr />
+<h4 id="at-this-point-you-should-have">At This Point You Should
+Have…</h4>
+<ul>
+<li>Node.js 22.12 or newer (Sanity Studio 6 requires it; this build used
+Node 24 LTS through nvm)</li>
+<li>A Sanity project. <code>npx sanity new</code> creates one with no
+account and a 72-hour claim link</li>
+<li>The repository cloned, with its environment script sourced
+(<code>source ./env.sh</code> in the repository root)</li>
+</ul>
+<hr />
+<h4 id="step-1--one-schema-two-studios">Step 1 — One Schema, Two
+Studios</h4>
+<p>The schema is defined once and built twice.
+<code>buildSchema({kiosk: true})</code> swaps a picture-button input
+into every enumerated field. <code>buildSchema({kiosk: false})</code>
+keeps Sanity's defaults. Two Studio workspaces share one dataset, so the
+stock Studio is the same data without the Brawndo.</p>
+<p>A proposal has <strong>no status field</strong>. Its stage lives in
+its workflow instance, which is itself a Sanity document, so there is
+one source of truth for where a plan stands.</p>
+<hr />
+<h4 id="step-2--joes-plan">Step 2 — Joe's Plan</h4>
+<p><img src="https://raw.githubusercontent.com/xbill9/devto-sanity/main/articles/brawndo/medium/img/devto-brawndo-diagram-1.png" alt="diagram" /></p>
+<p>The definition runs in Sanity's in-memory test bench before it is
+deployed:</p>
+<pre class="console"><code> ✓ definitions/joes-plan.test.ts (8 tests)
+      Tests  8 passed (8)</code></pre>
+<p>The tests prove the Secretary cannot approve, a rejection ends in the
+dust bowl, failed watering ends in the dust bowl, and harvest waits for
+<code>harvestAt</code>.</p>
+<p>🔎 Tip: an effect handler's <code>outputs</code> land in
+<code>$effects['&lt;effect&gt;']</code>. To write a workflow field,
+return <code>ops</code> with an explicit <code>target.scope</code>:</p>
+<pre class="typescript"><code>return {
+  outputs: {harvestAt},
+  ops: [{type: &#39;field.set&#39;, target: {scope: &#39;workflow&#39;, field: &#39;harvestAt&#39;}, value: {type: &#39;literal&#39;, value: harvestAt}}],
+}</code></pre>
+<hr />
+<h4 id="step-3--the-cabinet-is-advisory">Step 3 — The Cabinet Is
+Advisory</h4>
+<p>Sanity's Workflows docs say every check the engine makes is advisory.
+Role checks, guards and action filters shape the interface; the Content
+Lake enforces only dataset access control. So the Cabinet's power
+depends on a role the agent's token lacks.</p>
+<p>The Growth trial has the eight built-in roles and no custom ones:</p>
+<pre class="console"><code>Error: workflow.deployDefinitions: unknown project roles for project &quot;ukyhb6bu&quot;:
+  - joes-plan: generated role condition references unknown role &quot;secretary&quot;
+  - joes-plan: generated role condition references unknown role &quot;cabinet&quot;</code></pre>
+<p>The definition therefore reads its role names from the environment
+and deploys with <code>administrator</code> for the Cabinet and
+<code>editor</code> for the Secretary. A robot token cannot hold
+<code>administrator</code>:</p>
+<pre class="console"><code>$ sanity tokens add brawndo-e2e-cabinet --role administrator ...
+Error: Invalid role &quot;administrator&quot;. Available roles: editor, developer,
+contributor, access-manager, blueprints-deployer, deploy-studio, viewer</code></pre>
+<p>⚠️ <strong>The Cabinet can only be a person, and it has no
+power.</strong> The agent's <code>editor</code> token can write the
+fields directly. The Cabinet has a seat, a button, and an advisory vote.
+That's the movie.</p>
+<hr />
+<h4 id="step-4--water-the-crops">Step 4 — Water the Crops</h4>
+<p>The agent submits, the Cabinet approves in the Kiosk, and the runtime
+waters and harvests. Live, on the project:</p>
+<pre class="console"><code>16:46:07  agent submitted cabinet
+16:46:08  agent approve rejected (engine verdict, advisory) ActionDisabledError
+16:46:59  drainer watered { stage: &#39;growing&#39;, harvestAt: &#39;2026-09-18T16:47:00.255Z&#39; }
+16:47:16  final stage harvest
+16:47:16  fields after harvest [ { growth: &#39;crop&#39;, irrigation: &#39;water&#39;, number: 7 },
+                                 { growth: &#39;crop&#39;, irrigation: &#39;water&#39;, number: 9 } ]</code></pre>
+<p>Between the second and third lines, a person clicked <strong>Approve
+(water)</strong> in the Kiosk.</p>
+<p>🔎 Tip: Workflows is a library. Nothing moves unless code calls it,
+so something has to call <code>tick</code> after <code>harvestAt</code>
+passes and drain queued effects. Here that is
+<code>npm run runtime:watch</code>; in production it is a pair of Sanity
+Functions.</p>
+<hr />
+<h4 id="step-5--arithmetic-belongs-in-the-engine">Step 5 — Arithmetic
+Belongs in the Engine</h4>
+<p>Every tally on brawndo.gov is a GROQ <code>count()</code> computed by
+the Content Lake:</p>
+<pre class="groq"><code>count(*[_type == &quot;vote&quot; &amp;&amp; field._ref == ^._id &amp;&amp; choice == &quot;water&quot;])</code></pre>
+<p>Nothing is summed in React, and the agent never counts rows. Its
+<code>field_report</code> tool returns the engine's numbers with the
+filter it ran.</p>
+<p>One vote per citizen per field holds by construction: a vote's
+<code>_id</code> is built from both, so voting again replaces the vote.
+Three votes in, two votes out, read back anonymously:</p>
+<pre class="console"><code>vote field-07 -&gt; HTTP 200
+vote field-07 -&gt; HTTP 200
+vote field-03 -&gt; HTTP 200
+anonymous public read: {&#39;anonCitizens&#39;: 1, &#39;f7water&#39;: 1, &#39;votes&#39;: 2}</code></pre>
+<p>🔎 Tip: a document <code>_id</code> containing a dot is never served
+anonymously from a public dataset. Vote ids use hyphens. Workflow
+instance ids contain dots (<code>dev.wf-instance.…</code>), so
+brawndo.gov reads the docket on the server with a token.</p>
+<p>🔎 Tip: on a service that scales to zero, a prerendered page shows
+build-time data after every cold start. The scoreboard renders per
+request, and <code>&lt;SanityLive&gt;</code> keeps an open page
+current.</p>
+<hr />
+<h4 id="step-6--the-stopwatch">Step 6 — The Stopwatch</h4>
+<p>The question behind the Kiosk: can idiots use a data store? The
+protocol times three tasks in three interfaces, three runs each:</p>
+<ul>
+<li><strong>Water a field.</strong> Switch field N from Brawndo to
+water.</li>
+<li><strong>Add a citizen.</strong> Create a citizen with handle H.</li>
+<li><strong>Amend a proposal.</strong> Find the field with the most
+water votes on brawndo.gov and add it to proposal P.</li>
+</ul>
+<p>The interfaces are the Kiosk, the stock Studio, and the same data as
+markdown files edited in GitHub's web editor.</p>
+<p>A script starts the clock when the task is issued and stops it when
+the participant signals done. Another script checks the result against
+the dataset or the repository and records whether it is correct. Every
+number below comes from <code>analyze.py</code> reading the raw CSV,
+which is published in the repository.</p>
+<p>The first participant is an agent: Claude, driving Chrome through the
+Claude in Chrome extension.</p>
+<hr />
+<h4 id="compare-and-contrast">Compare and Contrast</h4>
+<p>Median seconds over three runs, participant A1 (the agent):</p>
+<p><img src="https://raw.githubusercontent.com/xbill9/devto-sanity/main/articles/brawndo/medium/img/devto-brawndo-table-3.png"
+alt="Table: Surface, Water a field, Add a citizen, Amend a proposal, Correct" /></p>
+<p>The stock Studio is fastest for the agent on every task, and GitHub
+is slowest on every task. The agent reads the accessibility tree, where
+a giant picture of a water glass and a small radio button carry the same
+label.</p>
+<p>Both Studios beat editing files. Adding a citizen in GitHub means
+creating a file, naming it, and typing the frontmatter by hand. Amending
+a proposal means editing an array inside YAML without breaking it.</p>
+<hr />
+<h4 id="so-which-one">So, Which One?</h4>
+<p>For an agent, the stock Studio. For the people of Idiocracy, the
+Kiosk, and that is the next measurement: the same protocol with a person
+who has never used git.</p>
+<hr />
+<h4 id="sanity-project-details">Sanity Project Details</h4>
+<ul>
+<li>Project ID: <code>ukyhb6bu</code>, dataset <code>production</code>
+(public read)</li>
+<li>Workflow: <code>joes-plan</code> v1, tag <code>dev</code></li>
+<li>Schema types: <code>field</code>, <code>citizen</code>,
+<code>proposal</code>, <code>vote</code></li>
+</ul>
+<hr />
+<h4 id="summary">Summary</h4>
+<p>The goal of this article was to build the Department of Agriculture
+from Idiocracy on Sanity and time whether its interface for
+non-programmers makes editing faster. The key to the solution was Sanity
+Workflows, where an agent and a person move the same document through
+the same transitions. The results were:</p>
+<ul>
+<li>🟢 Joe's Plan runs end to end on a live project: the agent submits,
+a person approves in the Kiosk, the runtime waters and harvests</li>
+<li>🟢 <strong>27 of 27</strong> timed edits correct across three
+interfaces</li>
+<li>🟢 Stock Studio fastest for the agent on every task: <strong>24.8
+s</strong>, <strong>16.8 s</strong> and <strong>37.6 s</strong>
+medians</li>
+<li>❌ Markdown on GitHub slowest on every task: <strong>37.2
+s</strong>, <strong>41.2 s</strong> and <strong>46.2 s</strong>
+medians</li>
+<li>⚠️ The Cabinet can only be a person, because a robot token cannot
+hold <code>administrator</code></li>
+<li>⚠️ The Cabinet is advisory, because the Growth trial has no custom
+roles to stop the agent's <code>editor</code> token</li>
+</ul>
+<p>Scope: one Sanity project on the Growth trial,
+<code>@sanity/workflow-*</code> 0.33.0, one participant (the agent) with
+three runs per task per interface in the order Kiosk, stock Studio,
+GitHub. The agent's times include the model's time to decide each
+action, and the Kiosk ran first, so it carries the learning curve.</p>
+<p>The strategy for using Sanity Workflows for an agent-and-person
+approval process was validated with an incremental step by step
+approach.</p>
+<hr />
+<h4 id="references">References</h4>
+<ul>
+<li><a href="https://dev.to/challenges/sanity-2026-09-16">Sanity
+Challenge</a></li>
+<li><a href="https://www.sanity.io/docs/workflows">Sanity
+Workflows</a></li>
+<li><a
+href="https://www.sanity.io/docs/workflows/actors-and-enforcement">Actors,
+tokens, and enforcement</a></li>
+<li><a href="https://www.sanity.io/docs/app-sdk">Sanity App SDK</a></li>
+<li><a
+href="https://www.sanity.io/docs/content-lake/live-content-api">Live
+Content API</a></li>
+<li><a
+href="https://www.sanity.io/docs/getting-started/projects-without-an-account">Projects
+created without an account</a></li>
+</ul>
+</body>
+</html>
