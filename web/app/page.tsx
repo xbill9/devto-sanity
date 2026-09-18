@@ -1,9 +1,10 @@
 import {sanityFetch} from '@/sanity/live'
 import {serverReader, workflowTag} from '@/sanity/client'
-import {DOCKET_QUERY, FIELDS_QUERY, TOTALS_QUERY} from '@/sanity/queries'
-import {vote} from './actions'
+import {DOCKET_QUERY, FIELDS_QUERY, MY_VOTES_QUERY, TOTALS_QUERY} from '@/sanity/queries'
+import {cookies} from 'next/headers'
 import {CROP, GROWTH, IRRIGATION, STAGE} from './pictures'
 import {SummonButton} from './summon-button'
+import {VoteButtons} from './vote-buttons'
 
 const KIOSK = 'https://brawndo-agriculture.sanity.studio/kiosk/workflows'
 
@@ -21,6 +22,12 @@ export default async function Home() {
     serverReader.fetch<Plan[]>(DOCKET_QUERY, {workflowTag}).then((data) => ({data})),
     sanityFetch({query: TOTALS_QUERY}) as Promise<{data: Totals}>,
   ])
+  // This visitor's own votes, so each field can mark the button they picked. Per-visitor, so never cached.
+  const citizen = (await cookies()).get('brawndo-citizen')?.value
+  const myVotes = citizen
+    ? await serverReader.fetch<Array<{field: string; choice: 'brawndo' | 'water'}>>(MY_VOTES_QUERY, {citizen})
+    : []
+  const mine = new Map(myVotes.map((v) => [v.field, v.choice]))
 
   return (
     <main>
@@ -58,15 +65,7 @@ export default async function Home() {
             <p className="irrigation">
               Now: {IRRIGATION[f.irrigation]} {f.irrigation === 'brawndo' ? 'Brawndo' : 'Water'}
             </p>
-            <form action={vote} className="votes">
-              <input type="hidden" name="field" value={f._id} />
-              <button name="choice" value="brawndo" aria-label={`Vote Brawndo for field ${f.number}`}>
-                ⚡ Brawndo <b>{f.brawndo}</b>
-              </button>
-              <button name="choice" value="water" aria-label={`Vote water for field ${f.number}`}>
-                💧 Water <b>{f.water}</b>
-              </button>
-            </form>
+            <VoteButtons fieldId={f._id} fieldNumber={f.number} brawndo={f.brawndo} water={f.water} mine={mine.get(f._id)} />
           </article>
         ))}
       </section>

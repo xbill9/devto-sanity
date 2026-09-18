@@ -34,3 +34,5 @@ a { color: var(--water); }
 .summon button:disabled { cursor: wait; opacity: 0.7; }
 .summon p { min-height: 1.4em; margin: 8px 0 0; }
 .summon p.refused { opacity: 0.8; font-style: italic; }
+.votes button.mine { border-color: var(--ink); background: rgba(0, 0, 0, 0.08); font-weight: 700; }
+.votes button:disabled { cursor: wait; }

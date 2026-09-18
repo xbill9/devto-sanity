@@ -25,3 +25,5 @@ export const TOTALS_QUERY: string = `{
   "watered": count(*[_type == "field" && irrigation == "water"]),
   "fields": count(*[_type == "field"])
 }`
+
+export const MY_VOTES_QUERY: string = `*[_type == "vote" && citizen._ref == $citizen]{"field": field._ref, choice}`

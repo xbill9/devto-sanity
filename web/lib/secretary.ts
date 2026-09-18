@@ -142,7 +142,9 @@ export async function summonSecretary(): Promise<SummonResult> {
   if (!(await takeLock(client))) return {ok: false, message: 'The Secretary is already on it. Watch the Docket.'}
   const log: string[] = []
   try {
-    const anthropic = new Anthropic()
+    // A key that is not scoped to a workspace must name one on every request.
+    const workspace = process.env.ANTHROPIC_WORKSPACE_ID
+    const anthropic = new Anthropic(workspace ? {defaultHeaders: {'anthropic-workspace-id': workspace}} : {})
     const messages: Anthropic.Beta.BetaMessageParam[] = [{role: 'user', content: 'A citizen summoned you. The crops are dying.'}]
     for (let turn = 0; turn < MAX_TURNS; turn++) {
       const response = await anthropic.beta.messages.create({
