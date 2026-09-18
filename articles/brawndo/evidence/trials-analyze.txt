@@ -1,4 +1,4 @@
-# python3 trials/analyze.py trials/runs.csv — captured 2026-09-18T18:21:48Z
+# python3 trials/analyze.py trials/runs.csv — captured 2026-09-18T18:24:18Z
 source: trials/runs.csv  rows: 27
 
 ## agent (participants: A1)
@@ -14,3 +14,5 @@ source: trials/runs.csv  rows: 27
 | Markdown/GitHub | T1 | 3 | 37.2 | 33.0 | 82.3 | 3/3 | 0 |
 | Markdown/GitHub | T2 | 3 | 41.2 | 39.6 | 46.6 | 3/3 | 0 |
 | Markdown/GitHub | T3 | 3 | 46.2 | 43.0 | 72.9 | 3/3 | 0 |
+
+total: 27 of 27 runs correct

@@ -50,6 +50,7 @@ def main() -> None:
         if not keys:
             continue
         participants = sorted({r["participant"] for r in rows if r["population"] == population})
+        pop = [r for r in rows if r["population"] == population]
         print(f"\n## {population} (participants: {', '.join(participants)})\n")
         print("| Surface | Task | n | Median s | Min s | Max s | Correct | Assists |")
         print("|---|---|---:|---:|---:|---:|---:|---:|")
@@ -60,6 +61,7 @@ def main() -> None:
                 f"| {SURFACES[key[1]]} | {key[2]} | {len(g)} | {statistics.median(secs):.1f} | {min(secs):.1f} | "
                 f"{max(secs):.1f} | {sum(r['correct'] for r in g)}/{len(g)} | {sum(r['assists'] for r in g)} |"
             )
+        print(f"\ntotal: {sum(r['correct'] for r in pop)} of {len(pop)} runs correct")
 
 
 if __name__ == "__main__":
