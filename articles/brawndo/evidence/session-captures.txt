@@ -56,3 +56,8 @@ Service URL: https://brawndo-gov-289270257791.us-central1.run.app
 vote -> HTTP 200
 live totals: 2 of 12 fields on water · 4 votes from 8 citizens
 content lake: {'citizens': 8, 'votes': 4}
+
+# 2026-09-18 19:05 EDT (23:05 UTC), `npm run functions:deploy` in workflows/ with brawndo-tick at '* * * * *'
+# (request ID 2add8a9e-a692-97c4-b6d0-f670f39e3d98). Redeployed at '0 * * * *'; Cloud Scheduler calls /api/tick every minute.
+ ›   Error: There were errors validating your resources:
+ ›    - brawndo-tick would run minutely but your plan limits you to hourly

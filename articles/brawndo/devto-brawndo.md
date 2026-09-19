@@ -19,7 +19,8 @@ cover_image: https://raw.githubusercontent.com/xbill9/devto-sanity/main/articles
 | Workflow | `joes-plan` v1, `@sanity/workflow-*` 0.33.0 (early access) |
 | Front end | Next.js 16 + `next-sanity` live content, on Cloud Run |
 | Dashboard app | App SDK **Cabinet Room** |
-| Agent | Claude (`claude-opus-5`) + `@sanity/workflow-mcp` |
+| Agent | Claude (`claude-opus-5`) on brawndo.gov's server, calling the Workflows engine |
+| Runtime | Sanity Functions (Blueprint), plus Cloud Scheduler for the harvest clock |
 | Result | agent → Cabinet → watering → **harvest** on the live project; **27 of 27** timed edits correct |
 
 ---
@@ -35,7 +36,7 @@ The one pitch for a CMS that holds up is that people who can't use git can use a
 | Surface | Built with | Who uses it |
 |---|---|---|
 | **The Kiosk** | Studio with custom picture-button inputs + the Workflows plugin | the Cabinet |
-| **Joe's Plan** | Sanity Workflows | the agent, the Cabinet, the runtime |
+| **Joe's Plan** | Sanity Workflows + Sanity Functions | the agent, the Cabinet, the runtime |
 | **brawndo.gov** | Next.js + `next-sanity` | citizens |
 | **The Cabinet Room** | App SDK dashboard app | the Cabinet |
 
@@ -43,9 +44,13 @@ The one pitch for a CMS that holds up is that people who can't use git can use a
 
 #### Demo
 
-**brawndo.gov:** [brawndo-gov-289270257791.us-central1.run.app](https://brawndo-gov-289270257791.us-central1.run.app) — vote on a field; voting again replaces your vote.
+**brawndo.gov:** [brawndo-gov-289270257791.us-central1.run.app](https://brawndo-gov-289270257791.us-central1.run.app)
 
-The Kiosk is hosted at `brawndo-agriculture.sanity.studio` and signs in through the Sanity Dashboard.
+1. Vote on a field: keep ⚡ Brawndo or switch to 💧 water. Your vote is marked; voting again replaces it.
+2. Press **🏛️ Summon the Secretary**. The agent reads the tallies and sends the Cabinet a plan for the fields that voted for water.
+3. The Cabinet approves in the Kiosk. Approved fields turn 💧 and sprout 🌱 within seconds, and are harvested 🌽 five minutes later.
+
+Nothing runs on anyone's laptop. The Kiosk is hosted at `brawndo-agriculture.sanity.studio` and signs in through the Sanity Dashboard, so step 3 needs a seat in the project: the Cabinet.
 
 ---
 
@@ -59,7 +64,7 @@ https://github.com/xbill9/devto-sanity
 
 #### My Build Process
 
-The whole project was built in one Claude Code session, from an empty directory to a harvested field.
+The project was built with Claude Code, from an empty directory to a harvested field.
 
 ---
 
@@ -144,20 +149,41 @@ contributor, access-manager, blueprints-deployer, deploy-studio, viewer
 
 #### Step 4 — Water the Crops
 
-The agent submits, the Cabinet approves in the Kiosk, and the runtime waters and harvests. Live, on the project:
+A citizen presses **Summon the Secretary**. The agent runs on brawndo.gov's server with three tools: `field_report` (the tallies, computed by GROQ), `create_proposal`, and `submit_to_cabinet`, which starts Joe's Plan and fires `submit`. It has no tool that approves.
+
+Its proposal, written for the Cabinet:
+
+> Field 5, Stadium Lot, still gets Brawndo. It grows dust. 2 people voted for water. 0 people voted for Brawndo. Field 12, Joe's Patch, still gets Brawndo. It grows dust too. 1 person voted for water. 0 people voted for Brawndo. The people picked water on both. So let's give these two fields water.
+
+The plan's history on the live project, read back from the workflow instance (UTC):
 
 ```console
-16:46:07  agent submitted cabinet
-16:46:08  agent approve rejected (engine verdict, advisory) ActionDisabledError
-16:46:59  drainer watered { stage: 'growing', harvestAt: '2026-09-18T16:47:00.255Z' }
-16:47:16  final stage harvest
-16:47:16  fields after harvest [ { growth: 'crop', irrigation: 'water', number: 7 },
-                                 { growth: 'crop', irrigation: 'water', number: 9 } ]
+00:18:09  petition  started                   brawndo-secretary  (server)
+00:18:13  petition  draft.submit              brawndo-secretary  (server)
+00:18:14  cabinet
+01:49:36  cabinet   decide.approve            administrator      (Studio, browser)
+01:49:45  watering  water-fields effect       brawndo-drain      (Sanity Function)
+01:49:47  growing
+01:55:05  growing   ripen.queue-harvest       brawndo-tick-http  (Cloud Scheduler)
+01:55:10  harvest   harvest-fields effect     brawndo-drain      (Sanity Function)
 ```
 
-Between the second and third lines, a person clicked **Approve (water)** in the Kiosk.
+Between 00:18 and 01:49 the plan sat before the Cabinet until a person approved it.
 
-🔎 Tip: Workflows is a library. Nothing moves unless code calls it, so something has to call `tick` after `harvestAt` passes and drain queued effects. Here that is `npm run runtime:watch`; in production it is a pair of Sanity Functions.
+🔎 Tip: Workflows is a library. Nothing moves unless code calls it. A document Function whose filter fires when unclaimed effects increase runs the watering the moment the Cabinet approves:
+
+```groq
+count(after().pendingEffects[!defined(claim)]) > coalesce(count(before().pendingEffects[!defined(claim)]), 0)
+```
+
+⚠️ Time passing creates no document event, so something must `tick` once `harvestAt` passes. The Growth trial refuses a minutely scheduled Function:
+
+```console
+Error: There were errors validating your resources:
+ - brawndo-tick would run minutely but your plan limits you to hourly
+```
+
+The scheduled Function runs hourly as a recovery sweep. The harvest clock is Cloud Scheduler calling brawndo.gov's `/api/tick` every minute; the tick only queues `harvest-fields`, and the same document Function harvests.
 
 ---
 
@@ -236,12 +262,13 @@ For an agent, the stock Studio. For the people of Idiocracy, the Kiosk, and that
 
 The goal of this article was to build the Department of Agriculture from Idiocracy on Sanity and time whether its interface for non-programmers makes editing faster. The key to the solution was Sanity Workflows, where an agent and a person move the same document through the same transitions. The results were:
 
-- 🟢 Joe's Plan runs end to end on a live project: the agent submits, a person approves in the Kiosk, the runtime waters and harvests
+- 🟢 Joe's Plan runs end to end on a live project: the agent proposes from the votes, a person approves in the Kiosk, Sanity Functions water and harvest
 - 🟢 **27 of 27** timed edits correct across three interfaces
 - 🟢 Stock Studio fastest for the agent on every task: **24.8 s**, **16.8 s** and **37.6 s** medians
 - ❌ Markdown on GitHub slowest on every task: **37.2 s**, **41.2 s** and **46.2 s** medians
 - ⚠️ The Cabinet can only be a person, because a robot token cannot hold `administrator`
 - ⚠️ The Cabinet is advisory, because the Growth trial has no custom roles to stop the agent's `editor` token
+- ⚠️ Scheduled Functions run at most hourly on the Growth trial, so the harvest clock is Cloud Scheduler
 
 Scope: one Sanity project on the Growth trial, `@sanity/workflow-*` 0.33.0, one participant (the agent) with three runs per task per interface in the order Kiosk, stock Studio, GitHub. The agent's times include the model's time to decide each action, and the Kiosk ran first, so it carries the learning curve.
 

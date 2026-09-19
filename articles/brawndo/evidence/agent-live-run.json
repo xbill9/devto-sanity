@@ -1,0 +1,793 @@
+{
+ "_id": "dev.wf-instance.64fc1364ffe6",
+ "completedAt": "2026-09-19T01:55:10.134Z",
+ "currentStage": "harvest",
+ "effectHistory": [
+  {
+   "_key": "59077a68cf5e",
+   "actor": {
+    "id": "g-uzFKedhqVSI9",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "name": "water-fields",
+   "origin": {
+    "kind": "action",
+    "name": "queue-watering"
+   },
+   "outputs": {
+    "harvestAt": "2026-09-19T01:54:44.910Z"
+   },
+   "params": {
+    "subject": "dataset:ukyhb6bu:production:jLe7hSgM7sILxxhuYmjwfb"
+   },
+   "ranAt": "2026-09-19T01:49:45.918Z",
+   "stageEntryKey": "3cae2846dbea",
+   "status": "done"
+  },
+  {
+   "_key": "b06fcb36a021",
+   "actor": {
+    "id": "g-uzFKedhqVSI9",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "name": "harvest-fields",
+   "origin": {
+    "kind": "action",
+    "name": "queue-harvest"
+   },
+   "params": {
+    "subject": "dataset:ukyhb6bu:production:jLe7hSgM7sILxxhuYmjwfb"
+   },
+   "ranAt": "2026-09-19T01:55:09.158Z",
+   "stageEntryKey": "8f9492f6ffab",
+   "status": "done"
+  }
+ ],
+ "fields": [
+  {
+   "_key": "d529f1623889",
+   "_type": "subject",
+   "description": "The proposal document this plan is about.",
+   "name": "subject",
+   "title": "Proposal",
+   "value": {
+    "id": "dataset:ukyhb6bu:production:jLe7hSgM7sILxxhuYmjwfb",
+    "type": "proposal"
+   }
+  },
+  {
+   "_key": "fd5192ff7ded",
+   "_type": "string",
+   "name": "harvestAt",
+   "title": "Harvest at",
+   "value": "2026-09-19T01:54:44.910Z"
+  }
+ ],
+ "history": [
+  {
+   "_key": "bf7704df91ec",
+   "_type": "stageEntered",
+   "actor": {
+    "id": "g-JtGvLbzR2HSo",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T00:18:09.754Z",
+   "executionContext": {
+    "id": "brawndo-secretary",
+    "kind": "server",
+    "runtime": "node"
+   },
+   "stage": "petition"
+  },
+  {
+   "_key": "f29efaa3f1a8",
+   "_type": "actionFired",
+   "action": "submit",
+   "activity": "draft",
+   "actor": {
+    "id": "g-JtGvLbzR2HSo",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T00:18:13.165Z",
+   "driverKind": "person",
+   "executionContext": {
+    "id": "brawndo-secretary",
+    "kind": "server",
+    "runtime": "node"
+   },
+   "stage": "petition"
+  },
+  {
+   "_key": "12f0498212c5",
+   "_type": "activityStatusChanged",
+   "activity": "draft",
+   "actor": {
+    "id": "g-JtGvLbzR2HSo",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T00:18:13.165Z",
+   "executionContext": {
+    "id": "brawndo-secretary",
+    "kind": "server",
+    "runtime": "node"
+   },
+   "from": "active",
+   "stage": "petition",
+   "to": "done"
+  },
+  {
+   "_key": "084524574d8a",
+   "_type": "opApplied",
+   "action": "submit",
+   "activity": "draft",
+   "actor": {
+    "id": "g-JtGvLbzR2HSo",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T00:18:13.165Z",
+   "executionContext": {
+    "id": "brawndo-secretary",
+    "kind": "server",
+    "runtime": "node"
+   },
+   "opType": "status.set",
+   "resolved": {
+    "activity": "draft",
+    "status": "done"
+   },
+   "stage": "petition"
+  },
+  {
+   "_key": "ca7758dfdfe7",
+   "_type": "stageExited",
+   "actor": {
+    "id": "g-JtGvLbzR2HSo",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T00:18:14.493Z",
+   "executionContext": {
+    "id": "brawndo-secretary",
+    "kind": "server",
+    "runtime": "node"
+   },
+   "stage": "petition",
+   "toStage": "cabinet",
+   "transition": "to-cabinet"
+  },
+  {
+   "_key": "c64519067138",
+   "_type": "transitionFired",
+   "actor": {
+    "id": "g-JtGvLbzR2HSo",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T00:18:14.493Z",
+   "executionContext": {
+    "id": "brawndo-secretary",
+    "kind": "server",
+    "runtime": "node"
+   },
+   "fromStage": "petition",
+   "toStage": "cabinet",
+   "transition": "to-cabinet"
+  },
+  {
+   "_key": "5e1b62e72394",
+   "_type": "stageEntered",
+   "actor": {
+    "id": "g-JtGvLbzR2HSo",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T00:18:14.493Z",
+   "executionContext": {
+    "id": "brawndo-secretary",
+    "kind": "server",
+    "runtime": "node"
+   },
+   "fromStage": "petition",
+   "stage": "cabinet",
+   "transition": "to-cabinet"
+  },
+  {
+   "_key": "d3dc9fdc2e44",
+   "_type": "actionFired",
+   "action": "approve",
+   "activity": "decide",
+   "actor": {
+    "id": "gCprU5eJj",
+    "kind": "person",
+    "roles": [
+     "administrator"
+    ]
+   },
+   "at": "2026-09-19T01:49:36.752Z",
+   "driverKind": "person",
+   "executionContext": {
+    "kind": "studio",
+    "runtime": "browser"
+   },
+   "stage": "cabinet"
+  },
+  {
+   "_key": "7f11d1c06888",
+   "_type": "opApplied",
+   "action": "approve",
+   "activity": "decide",
+   "actor": {
+    "id": "gCprU5eJj",
+    "kind": "person",
+    "roles": [
+     "administrator"
+    ]
+   },
+   "at": "2026-09-19T01:49:36.752Z",
+   "executionContext": {
+    "kind": "studio",
+    "runtime": "browser"
+   },
+   "opType": "field.set",
+   "resolved": {
+    "value": "approve"
+   },
+   "stage": "cabinet",
+   "target": {
+    "field": "decision",
+    "scope": "stage"
+   }
+  },
+  {
+   "_key": "31903edc7afa",
+   "_type": "activityStatusChanged",
+   "activity": "decide",
+   "actor": {
+    "id": "gCprU5eJj",
+    "kind": "person",
+    "roles": [
+     "administrator"
+    ]
+   },
+   "at": "2026-09-19T01:49:36.752Z",
+   "executionContext": {
+    "kind": "studio",
+    "runtime": "browser"
+   },
+   "from": "active",
+   "stage": "cabinet",
+   "to": "done"
+  },
+  {
+   "_key": "a67f3753747a",
+   "_type": "opApplied",
+   "action": "approve",
+   "activity": "decide",
+   "actor": {
+    "id": "gCprU5eJj",
+    "kind": "person",
+    "roles": [
+     "administrator"
+    ]
+   },
+   "at": "2026-09-19T01:49:36.752Z",
+   "executionContext": {
+    "kind": "studio",
+    "runtime": "browser"
+   },
+   "opType": "status.set",
+   "resolved": {
+    "activity": "decide",
+    "status": "done"
+   },
+   "stage": "cabinet"
+  },
+  {
+   "_key": "47386793600d",
+   "_type": "stageExited",
+   "actor": {
+    "id": "gCprU5eJj",
+    "kind": "person",
+    "roles": [
+     "administrator"
+    ]
+   },
+   "at": "2026-09-19T01:49:38.331Z",
+   "executionContext": {
+    "kind": "studio",
+    "runtime": "browser"
+   },
+   "stage": "cabinet",
+   "toStage": "watering",
+   "transition": "to-watering"
+  },
+  {
+   "_key": "9d55fe294fb4",
+   "_type": "transitionFired",
+   "actor": {
+    "id": "gCprU5eJj",
+    "kind": "person",
+    "roles": [
+     "administrator"
+    ]
+   },
+   "at": "2026-09-19T01:49:38.331Z",
+   "executionContext": {
+    "kind": "studio",
+    "runtime": "browser"
+   },
+   "fromStage": "cabinet",
+   "toStage": "watering",
+   "transition": "to-watering"
+  },
+  {
+   "_key": "c4c683db82da",
+   "_type": "stageEntered",
+   "actor": {
+    "id": "gCprU5eJj",
+    "kind": "person",
+    "roles": [
+     "administrator"
+    ]
+   },
+   "at": "2026-09-19T01:49:38.331Z",
+   "executionContext": {
+    "kind": "studio",
+    "runtime": "browser"
+   },
+   "fromStage": "cabinet",
+   "stage": "watering",
+   "transition": "to-watering"
+  },
+  {
+   "_key": "99a445d7f606",
+   "_type": "actionFired",
+   "action": "queue-watering",
+   "activity": "water",
+   "actor": {
+    "id": "gCprU5eJj",
+    "kind": "person",
+    "roles": [
+     "administrator"
+    ]
+   },
+   "at": "2026-09-19T01:49:40.094Z",
+   "driverKind": "person",
+   "executionContext": {
+    "kind": "studio",
+    "runtime": "browser"
+   },
+   "stage": "watering",
+   "triggered": true
+  },
+  {
+   "_key": "a5dce0df7f02",
+   "_type": "effectQueued",
+   "at": "2026-09-19T01:49:40.094Z",
+   "effect": "water-fields",
+   "effectKey": "59077a68cf5e",
+   "executionContext": {
+    "kind": "studio",
+    "runtime": "browser"
+   },
+   "origin": {
+    "kind": "action",
+    "name": "queue-watering"
+   }
+  },
+  {
+   "_key": "5e22ef1802d6",
+   "_type": "effectCompleted",
+   "actor": {
+    "id": "g-uzFKedhqVSI9",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T01:49:45.918Z",
+   "effect": "water-fields",
+   "effectKey": "59077a68cf5e",
+   "executionContext": {
+    "id": "brawndo-drain",
+    "kind": "drainer",
+    "runtime": "node"
+   },
+   "outputs": {
+    "harvestAt": "2026-09-19T01:54:44.910Z"
+   },
+   "status": "done"
+  },
+  {
+   "_key": "0c434f330539",
+   "_type": "opApplied",
+   "actor": {
+    "id": "g-uzFKedhqVSI9",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T01:49:45.918Z",
+   "effect": "water-fields",
+   "executionContext": {
+    "id": "brawndo-drain",
+    "kind": "drainer",
+    "runtime": "node"
+   },
+   "opType": "field.set",
+   "resolved": {
+    "value": "2026-09-19T01:54:44.910Z"
+   },
+   "stage": "watering",
+   "target": {
+    "field": "harvestAt",
+    "scope": "workflow"
+   }
+  },
+  {
+   "_key": "4ddb7e9704ee",
+   "_type": "actionFired",
+   "action": "watered",
+   "activity": "water",
+   "actor": {
+    "id": "g-uzFKedhqVSI9",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T01:49:47.586Z",
+   "driverKind": "person",
+   "executionContext": {
+    "id": "brawndo-drain",
+    "kind": "drainer",
+    "runtime": "node"
+   },
+   "stage": "watering",
+   "triggered": true
+  },
+  {
+   "_key": "9214fdc53ec4",
+   "_type": "activityStatusChanged",
+   "activity": "water",
+   "actor": {
+    "id": "g-uzFKedhqVSI9",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T01:49:47.586Z",
+   "executionContext": {
+    "id": "brawndo-drain",
+    "kind": "drainer",
+    "runtime": "node"
+   },
+   "from": "active",
+   "stage": "watering",
+   "to": "done"
+  },
+  {
+   "_key": "8f250eb58687",
+   "_type": "opApplied",
+   "action": "watered",
+   "activity": "water",
+   "actor": {
+    "id": "g-uzFKedhqVSI9",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T01:49:47.586Z",
+   "executionContext": {
+    "id": "brawndo-drain",
+    "kind": "drainer",
+    "runtime": "node"
+   },
+   "opType": "status.set",
+   "resolved": {
+    "activity": "water",
+    "status": "done"
+   },
+   "stage": "watering"
+  },
+  {
+   "_key": "55d136ebab95",
+   "_type": "stageExited",
+   "actor": {
+    "id": "g-uzFKedhqVSI9",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T01:49:47.586Z",
+   "executionContext": {
+    "id": "brawndo-drain",
+    "kind": "drainer",
+    "runtime": "node"
+   },
+   "stage": "watering",
+   "toStage": "growing",
+   "transition": "to-growing"
+  },
+  {
+   "_key": "0f1a520c25a9",
+   "_type": "transitionFired",
+   "actor": {
+    "id": "g-uzFKedhqVSI9",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T01:49:47.586Z",
+   "executionContext": {
+    "id": "brawndo-drain",
+    "kind": "drainer",
+    "runtime": "node"
+   },
+   "fromStage": "watering",
+   "toStage": "growing",
+   "transition": "to-growing"
+  },
+  {
+   "_key": "287c77c6d6e5",
+   "_type": "stageEntered",
+   "actor": {
+    "id": "g-uzFKedhqVSI9",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T01:49:47.586Z",
+   "executionContext": {
+    "id": "brawndo-drain",
+    "kind": "drainer",
+    "runtime": "node"
+   },
+   "fromStage": "watering",
+   "stage": "growing",
+   "transition": "to-growing"
+  },
+  {
+   "_key": "7646068bcf21",
+   "_type": "actionFired",
+   "action": "queue-harvest",
+   "activity": "ripen",
+   "actor": {
+    "id": "g-JtGvLbzR2HSo",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T01:55:05.039Z",
+   "driverKind": "person",
+   "executionContext": {
+    "id": "brawndo-tick-http",
+    "kind": "server",
+    "runtime": "node"
+   },
+   "stage": "growing",
+   "triggered": true
+  },
+  {
+   "_key": "9f898571b993",
+   "_type": "effectQueued",
+   "at": "2026-09-19T01:55:05.039Z",
+   "effect": "harvest-fields",
+   "effectKey": "b06fcb36a021",
+   "executionContext": {
+    "id": "brawndo-tick-http",
+    "kind": "server",
+    "runtime": "node"
+   },
+   "origin": {
+    "kind": "action",
+    "name": "queue-harvest"
+   }
+  },
+  {
+   "_key": "09f6cda573d4",
+   "_type": "effectCompleted",
+   "actor": {
+    "id": "g-uzFKedhqVSI9",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T01:55:09.158Z",
+   "effect": "harvest-fields",
+   "effectKey": "b06fcb36a021",
+   "executionContext": {
+    "id": "brawndo-drain",
+    "kind": "drainer",
+    "runtime": "node"
+   },
+   "status": "done"
+  },
+  {
+   "_key": "b3100d60cc45",
+   "_type": "actionFired",
+   "action": "harvested",
+   "activity": "ripen",
+   "actor": {
+    "id": "g-uzFKedhqVSI9",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T01:55:10.134Z",
+   "driverKind": "person",
+   "executionContext": {
+    "id": "brawndo-drain",
+    "kind": "drainer",
+    "runtime": "node"
+   },
+   "stage": "growing",
+   "triggered": true
+  },
+  {
+   "_key": "728d73aaf762",
+   "_type": "activityStatusChanged",
+   "activity": "ripen",
+   "actor": {
+    "id": "g-uzFKedhqVSI9",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T01:55:10.134Z",
+   "executionContext": {
+    "id": "brawndo-drain",
+    "kind": "drainer",
+    "runtime": "node"
+   },
+   "from": "active",
+   "stage": "growing",
+   "to": "done"
+  },
+  {
+   "_key": "5cb3f034ffca",
+   "_type": "opApplied",
+   "action": "harvested",
+   "activity": "ripen",
+   "actor": {
+    "id": "g-uzFKedhqVSI9",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T01:55:10.134Z",
+   "executionContext": {
+    "id": "brawndo-drain",
+    "kind": "drainer",
+    "runtime": "node"
+   },
+   "opType": "status.set",
+   "resolved": {
+    "activity": "ripen",
+    "status": "done"
+   },
+   "stage": "growing"
+  },
+  {
+   "_key": "251826101a67",
+   "_type": "stageExited",
+   "actor": {
+    "id": "g-uzFKedhqVSI9",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T01:55:10.134Z",
+   "executionContext": {
+    "id": "brawndo-drain",
+    "kind": "drainer",
+    "runtime": "node"
+   },
+   "stage": "growing",
+   "toStage": "harvest",
+   "transition": "to-harvest"
+  },
+  {
+   "_key": "34105e6a98cb",
+   "_type": "transitionFired",
+   "actor": {
+    "id": "g-uzFKedhqVSI9",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T01:55:10.134Z",
+   "executionContext": {
+    "id": "brawndo-drain",
+    "kind": "drainer",
+    "runtime": "node"
+   },
+   "fromStage": "growing",
+   "toStage": "harvest",
+   "transition": "to-harvest"
+  },
+  {
+   "_key": "5b31072db490",
+   "_type": "stageEntered",
+   "actor": {
+    "id": "g-uzFKedhqVSI9",
+    "kind": "person",
+    "roles": [
+     "editor"
+    ]
+   },
+   "at": "2026-09-19T01:55:10.134Z",
+   "executionContext": {
+    "id": "brawndo-drain",
+    "kind": "drainer",
+    "runtime": "node"
+   },
+   "fromStage": "growing",
+   "stage": "harvest",
+   "transition": "to-harvest"
+  }
+ ],
+ "proposal": {
+  "_id": "jLe7hSgM7sILxxhuYmjwfb",
+  "author": "agent",
+  "body": [
+   {
+    "_key": "rationale",
+    "_type": "block",
+    "children": [
+     {
+      "_key": "text",
+      "_type": "span",
+      "marks": [],
+      "text": "Field 5, Stadium Lot, still gets Brawndo. It grows dust. 2 people voted for water. 0 people voted for Brawndo. Field 12, Joe's Patch, still gets Brawndo. It grows dust too. 1 person voted for water. 0 people voted for Brawndo. The people picked water on both. So let's give these two fields water."
+     }
+    ],
+    "markDefs": [],
+    "style": "normal"
+   }
+  ],
+  "fields": [
+   5,
+   12
+  ],
+  "title": "Put Water on Field 5 and Field 12"
+ },
+ "startedAt": "2026-09-19T00:18:09.754Z"
+}

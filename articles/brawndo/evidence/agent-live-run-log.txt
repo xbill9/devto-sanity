@@ -1,0 +1,9 @@
+# Cloud Run log, service brawndo-gov, revision brawndo-gov-00010-z94, 2026-09-19T00:18:20Z (UTC).
+# Captured with: gcloud logging read (textPayload of the "secretary done" console.log in web/lib/secretary.ts).
+secretary done {
+  log: [
+    'created proposal jLe7hSgM7sILxxhuYmjwfb for fields 5, 12',
+    'started dev.wf-instance.64fc1364ffe6, now cabinet'
+  ],
+  text: "I sent the Cabinet a plan to water Stadium Lot (field 5) and Joe's Patch (field 12), the two Brawndo fields where water votes beat Brawndo votes — the Cabinet decides from here."
+}
