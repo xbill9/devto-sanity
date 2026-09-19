@@ -153,6 +153,8 @@ export async function summonSecretary(): Promise<SummonResult> {
         system: SYSTEM,
         tools: TOOLS,
         messages,
+        // Reading a vote table and picking fields is routine work: low effort keeps a summons to seconds.
+        output_config: {effort: 'low'},
         // Server-side refusal fallback, routed by category.
         betas: ['server-side-fallback-2026-07-01'],
         fallbacks: 'default',
