@@ -217,10 +217,20 @@ alt="Table: Surface, Built with, Who uses it" /></p>
 <hr />
 <h4 id="demo">Demo</h4>
 <p><strong>brawndo.gov:</strong> <a
-href="https://brawndo-gov-289270257791.us-central1.run.app">brawndo-gov-289270257791.us-central1.run.app</a>
-— vote on a field; voting again replaces your vote.</p>
-<p>The Kiosk is hosted at <code>brawndo-agriculture.sanity.studio</code>
-and signs in through the Sanity Dashboard.</p>
+href="https://brawndo-gov-289270257791.us-central1.run.app">brawndo-gov-289270257791.us-central1.run.app</a></p>
+<ol type="1">
+<li>Vote on a field: keep ⚡ Brawndo or switch to 💧 water. Your vote is
+marked; voting again replaces it.</li>
+<li>Press <strong>🏛️ Summon the Secretary</strong>. The agent reads the
+tallies and sends the Cabinet a plan for the fields that voted for
+water.</li>
+<li>The Cabinet approves in the Kiosk. Approved fields turn 💧 and
+sprout 🌱 within seconds, and are harvested 🌽 five minutes later.</li>
+</ol>
+<p>Nothing runs on anyone's laptop. The Kiosk is hosted at
+<code>brawndo-agriculture.sanity.studio</code> and signs in through the
+Sanity Dashboard, so step 3 needs a seat in the project: the
+Cabinet.</p>
 <hr />
 <h4 id="code">Code</h4>
 <p><a
@@ -229,8 +239,8 @@ href="https://github.com/xbill9/devto-sanity">https://github.com/xbill9/devto-sa
 go-live runbook.</p>
 <hr />
 <h4 id="my-build-process">My Build Process</h4>
-<p>The whole project was built in one Claude Code session, from an empty
-directory to a harvested field.</p>
+<p>The project was built with Claude Code, from an empty directory to a
+harvested field.</p>
 <hr />
 <h4 id="where-do-i-start">Where Do I Start?</h4>
 <p>With what Sanity sells. A schema'd JSON store with a query language
@@ -309,21 +319,44 @@ fields directly. The Cabinet has a seat, a button, and an advisory vote.
 That's the movie.</p>
 <hr />
 <h4 id="step-4--water-the-crops">Step 4 — Water the Crops</h4>
-<p>The agent submits, the Cabinet approves in the Kiosk, and the runtime
-waters and harvests. Live, on the project:</p>
-<pre class="console"><code>16:46:07  agent submitted cabinet
-16:46:08  agent approve rejected (engine verdict, advisory) ActionDisabledError
-16:46:59  drainer watered { stage: &#39;growing&#39;, harvestAt: &#39;2026-09-18T16:47:00.255Z&#39; }
-16:47:16  final stage harvest
-16:47:16  fields after harvest [ { growth: &#39;crop&#39;, irrigation: &#39;water&#39;, number: 7 },
-                                 { growth: &#39;crop&#39;, irrigation: &#39;water&#39;, number: 9 } ]</code></pre>
-<p>Between the second and third lines, a person clicked <strong>Approve
-(water)</strong> in the Kiosk.</p>
-<p>🔎 Tip: Workflows is a library. Nothing moves unless code calls it,
-so something has to call <code>tick</code> after <code>harvestAt</code>
-passes and drain queued effects. Here that is
-<code>npm run runtime:watch</code>; in production it is a pair of Sanity
-Functions.</p>
+<p>A citizen presses <strong>Summon the Secretary</strong>. The agent
+runs on brawndo.gov's server with three tools: <code>field_report</code>
+(the tallies, computed by GROQ), <code>create_proposal</code>, and
+<code>submit_to_cabinet</code>, which starts Joe's Plan and fires
+<code>submit</code>. It has no tool that approves.</p>
+<p>Its proposal, written for the Cabinet:</p>
+<blockquote>
+<p>Field 5, Stadium Lot, still gets Brawndo. It grows dust. 2 people
+voted for water. 0 people voted for Brawndo. Field 12, Joe's Patch,
+still gets Brawndo. It grows dust too. 1 person voted for water. 0
+people voted for Brawndo. The people picked water on both. So let's give
+these two fields water.</p>
+</blockquote>
+<p>The plan's history on the live project, read back from the workflow
+instance (UTC):</p>
+<pre class="console"><code>00:18:09  petition  started                   brawndo-secretary  (server)
+00:18:13  petition  draft.submit              brawndo-secretary  (server)
+00:18:14  cabinet
+01:49:36  cabinet   decide.approve            administrator      (Studio, browser)
+01:49:45  watering  water-fields effect       brawndo-drain      (Sanity Function)
+01:49:47  growing
+01:55:05  growing   ripen.queue-harvest       brawndo-tick-http  (Cloud Scheduler)
+01:55:10  harvest   harvest-fields effect     brawndo-drain      (Sanity Function)</code></pre>
+<p>Between 00:18 and 01:49 the plan sat before the Cabinet until a
+person approved it.</p>
+<p>🔎 Tip: Workflows is a library. Nothing moves unless code calls it. A
+document Function whose filter fires when unclaimed effects increase
+runs the watering the moment the Cabinet approves:</p>
+<pre class="groq"><code>count(after().pendingEffects[!defined(claim)]) &gt; coalesce(count(before().pendingEffects[!defined(claim)]), 0)</code></pre>
+<p>⚠️ Time passing creates no document event, so something must
+<code>tick</code> once <code>harvestAt</code> passes. The Growth trial
+refuses a minutely scheduled Function:</p>
+<pre class="console"><code>Error: There were errors validating your resources:
+ - brawndo-tick would run minutely but your plan limits you to hourly</code></pre>
+<p>The scheduled Function runs hourly as a recovery sweep. The harvest
+clock is Cloud Scheduler calling brawndo.gov's <code>/api/tick</code>
+every minute; the tick only queues <code>harvest-fields</code>, and the
+same document Function harvests.</p>
 <hr />
 <h4 id="step-5--arithmetic-belongs-in-the-engine">Step 5 — Arithmetic
 Belongs in the Engine</h4>
@@ -402,8 +435,9 @@ non-programmers makes editing faster. The key to the solution was Sanity
 Workflows, where an agent and a person move the same document through
 the same transitions. The results were:</p>
 <ul>
-<li>🟢 Joe's Plan runs end to end on a live project: the agent submits,
-a person approves in the Kiosk, the runtime waters and harvests</li>
+<li>🟢 Joe's Plan runs end to end on a live project: the agent proposes
+from the votes, a person approves in the Kiosk, Sanity Functions water
+and harvest</li>
 <li>🟢 <strong>27 of 27</strong> timed edits correct across three
 interfaces</li>
 <li>🟢 Stock Studio fastest for the agent on every task: <strong>24.8
@@ -416,6 +450,8 @@ medians</li>
 hold <code>administrator</code></li>
 <li>⚠️ The Cabinet is advisory, because the Growth trial has no custom
 roles to stop the agent's <code>editor</code> token</li>
+<li>⚠️ Scheduled Functions run at most hourly on the Growth trial, so
+the harvest clock is Cloud Scheduler</li>
 </ul>
 <p>Scope: one Sanity project on the Growth trial,
 <code>@sanity/workflow-*</code> 0.33.0, one participant (the agent) with
